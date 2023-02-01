@@ -1,0 +1,88 @@
+@import "../../styles/index.scss";
+
+.rec-back {
+  width: 100%;
+}
+
+.rec-main {
+  margin: 0rem 5rem 0rem 5rem;
+  padding: 1rem 0rem 1rem 0rem;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.recipe {
+  text-align: left;
+  .rec-head-container {
+    margin: 0 0 3rem 0;
+    display: block;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: white;
+    border: 1px solid gainsboro;
+    border-radius: 5px;
+    transform: translateY(-30%);
+    padding: 1rem;
+
+    .rec-title-container {
+      width: 100%;
+    }
+
+    .stats {
+      display: flex;
+      flex-direction: row;
+      gap: 1.5rem;
+    }
+  }
+
+  .rec-img-container {
+    width: 100%;
+    min-height: 50vh;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: inset 0px 0px 300px 25px black;
+  }
+
+  .rec-facts {
+    background-color: gainsboro;
+    width: 90%;
+    margin: 2rem 1rem 0 1rem;
+    padding: 0.5rem;
+    border-radius: 5px;
+  }
+}
+
+.recipe-top {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+
+  .indgredients {
+    min-width: 50%;
+  }
+
+  .steps-sect {
+    min-width: 50%;
+  }
+}
+
+.step-list {
+  list-style: none;
+  .step-item {
+    border-bottom: 1px solid gainsboro;
+    padding: 1rem 0.5rem 1rem 0.5rem;
+  }
+
+  .step-item:nth-child(1) {
+    border-top: 1px solid gainsboro;
+  }
+
+  .step-num {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0 0.5rem 0 0;
+    vertical-align: middle;
+  }
+}

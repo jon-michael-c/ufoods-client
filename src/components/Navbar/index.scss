@@ -1,0 +1,83 @@
+@import "../../styles/index.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.user-options {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dropdown {
+  border: 1px solid gainsboro;
+  border-radius: 3px;
+  padding: 5px 10px;
+}
+
+nav {
+  max-width: 85%;
+
+  margin: auto;
+
+  ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: aquamarine;
+    height: 5vh;
+    li {
+      list-style: none;
+      margin: 2rem;
+    }
+  }
+}
+
+#logo-name {
+  display: flex;
+  flex-direction: row;
+  align-items: initial;
+  justify-content: center;
+
+  h1 {
+    margin: 0 10px 0 10px;
+  }
+
+  img {
+    margin: 0 10px 0 10px;
+  }
+}
+
+#search-form {
+  display: flex;
+  justify-self: center;
+  input {
+    position: relative;
+    border: 1px solid $secondary;
+    border-radius: 5px;
+  }
+  input:hover {
+    border: 1px solid $primary;
+  }
+
+  #search-btn {
+    background-color: white;
+    color: $secondary;
+    border: 1px solid $secondary;
+    border-left: none;
+    margin: 0;
+    transform: translateX(-15px);
+  }
+
+  #form1 {
+    border-right: none;
+  }
+  .btn-primary {
+    background-color: $secondary;
+    border: none;
+  }
+}

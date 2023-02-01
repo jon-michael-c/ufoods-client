@@ -1,0 +1,29 @@
+.quick-facts {
+  background-color: gainsboro;
+  margin: 10px 0.5rem 10px 0;
+  padding: 1rem;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fact-cont {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  gap: 1.5rem;
+}
+
+.vl {
+  width: 2px;
+  margin: 5px 0;
+  height: 100px;
+  background: gray;
+}
+
+.fact {
+  text-align: center;
+}/*# sourceMappingURL=index.css.map */
