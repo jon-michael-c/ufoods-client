@@ -1,16 +1,30 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router";
 
 export default function Interactions(props) {
+  const params = useParams();
   const [isLike, setIsLike] = useState(false);
   const [isDislike, setisDislike] = useState(false);
   const [isStar, setIsStar] = useState(false);
   const [likes, setLikes] = useState(0);
   const [dislikes, setDislikes] = useState(0);
   const [stars, setStars] = useState(0);
+  const [user, setUser] = useState("");
+  const [isLogin, setIsLogin] = useState(false)
+  
+  
+  
+  const removeAddLike = () => {
+    axios.patch(`${process.env.REACT_APP_API_URL}/recipes/likePost/${params.id}`, {
+        userId: props.userId
+    })
+  }
 
-  const handleLike = () => {
+  const handleLike =  () => {
     if (isLike) {
       // Remove like from DB
+      removeAddLike();
       setIsLike(false);
       setLikes(likes - 1);
     } else {
@@ -20,6 +34,7 @@ export default function Interactions(props) {
         setDislikes(dislikes - 1);
       }
       // Add like to the DB
+      removeAddLike()
       setIsLike(true);
       setLikes(likes + 1);
     }
@@ -53,33 +68,35 @@ export default function Interactions(props) {
   };
 
   useEffect(() => {
+    if(props.userId != "") {
+      setIsLogin(true)
+    }
     setLikes(Object.keys(props.details.likes).length);
     setDislikes(Object.keys(props.details.dislikes).length);
     setStars(Object.keys(props.details.stars).length);
-    setIsLike(props.user in props.details.likes);
-    setisDislike(props.user in props.details.dislikes);
-    setIsStar(props.user in props.details.stars);
+    setIsLike(props.userId in props.details.likes);
+    setisDislike(props.userId in props.details.dislikes);
+    setIsStar(props.userId in props.details.stars);
   }, []);
   return (
     <>
-      <div className="stats">
-        <div className="likes stat-item">
+      <div className="stats" style={{pointerEvents: `${isLogin ? 'initial' : 'none'}`}}>
+        <button className="likes stat-item" 
+              onClick={handleLike}>
           {isLike ? (
             <i
               className="fas fa-thumbs-up"
               id="thumbs-up-icon"
-              onClick={handleLike}
             ></i>
           ) : (
             <i
               className="far fa-thumbs-up"
               id="thumbs-up-icon"
-              onClick={handleLike}
             ></i>
           )}
           <p>{likes}</p>
-        </div>
-        <div className="dislikes stat-item">
+        </button>
+        <button className="dislikes stat-item">
           {isDislike ? (
             <i
               className="fas fa-thumbs-down"
@@ -94,15 +111,15 @@ export default function Interactions(props) {
             ></i>
           )}
           <p>{dislikes}</p>
-        </div>
-        <div className="star stat-item">
+        </button>
+        <button className="star stat-item">
           {isStar ? (
             <i className="fas fa-star" id="star-icon" onClick={handleStar}></i>
           ) : (
             <i className="far fa-star" id="star-icon" onClick={handleStar}></i>
           )}
           <p>{stars}</p>
-        </div>
+        </button>
       </div>
     </>
   );

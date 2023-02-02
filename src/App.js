@@ -8,6 +8,7 @@ import Recipe from "./pages/Recipe";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Results from "./pages/Results";
+import CreatePost from "./pages/CreateRecipe";
 
 function App() {
   /*
@@ -39,6 +40,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/results" element={<Results />} />
+          <Route path="/create-post" element={<CreatePost />} />
         </Routes>
       </BrowserRouter>
       <Footer />

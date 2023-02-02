@@ -4,21 +4,24 @@ import ReactLoading from "react-loading";
 import { useState, useEffect } from "react";
 import RecipeCard from "../components/RecipeCard";
 import Axios from "axios";
+import { getRecipes } from "../api/recipesAPI";
 
 export default function Home() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState("");
+  
 
   useEffect(() => {
     console.log(process.env);
     console.log(process.env.REACT_APP_API_URL);
     const API_URL = process.env.REACT_APP_API_URL;
-    Axios.get(`${API_URL}/recipes/getRecipes`).then((resp) => {
+
+     Axios.get(`${API_URL}/recipes/getRecipes`).then((resp) => {
       setData(resp.data);
       console.log(resp.data);
       setLoading(false);
-    });
+    }); 
   }, []);
 
   return (

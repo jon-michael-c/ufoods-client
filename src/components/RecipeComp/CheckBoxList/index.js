@@ -47,9 +47,7 @@ export default function CheckBoxList(props) {
       num = decToFrac(eval(split[0]) * quantity);
       unit = split[1];
     } else if (split.length == 3) {
-      console.log(split);
       let tmp = split[0] + eval(split[1]);
-      console.log(tmp);
       num = decToFrac(eval(tmp));
       unit = split[2];
     }

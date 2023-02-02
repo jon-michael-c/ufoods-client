@@ -11,37 +11,22 @@ import Interactions from "../../components/RecipeComp/Interactions";
 export default function Recipe() {
   let params = useParams();
   const [details, setDetails] = useState([]);
-  const [isLike, setIsLike] = useState(false);
-  const [likes, setLikes] = useState(1);
+  const [userId, setUserId] = useState("")
   const { user } = useAuthContext();
-
-  const fetchIsLiked = async () => {};
 
   const fetchDetails = async () => {
     const data = await Axios.get(
       `${process.env.REACT_APP_API_URL}/recipes/getRecipe/${params.id}`
     );
     const result = data.data;
-    console.log(result);
     setDetails(result);
     document.title = result.name;
   };
 
-  const handleLike = async () => {
-    if (isLike) {
-      setIsLike(false);
-      setLikes(likes - 1);
-    } else {
-      setIsLike(true);
-      setLikes(likes + 1);
-    }
-  };
-
-  useEffect(() => {
-    //console.log(params.id);
+    useEffect(() => {
+    if(user) setUserId(user.id)
     fetchDetails();
     //fetchIsLiked();
-    //console.log(user.email);
 
     document.title = "Loading...";
   }, [user, params]);
@@ -68,7 +53,7 @@ export default function Recipe() {
                 <div className="rec-title-container">
                   <h1 className="rec-title">{details.name}</h1>
                   <h3 className="rec-author">By Anon</h3>
-                  <Interactions details={details} user={user} />
+                  <Interactions details={details} userId={userId} />
                   <QuickFacts data={details} />
                 </div>
               </div>

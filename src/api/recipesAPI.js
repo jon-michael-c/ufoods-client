@@ -1,5 +1,12 @@
 import axios from "axios";
 
-export default axios.create({
-  baseURL: `${process.env.API_URL}/recipes/`,
+const api = axios.create({
+  baseURL: `${process.env.REACT_APP_API_URL}/recipes/`,
 });
+
+export const getRecipes = async (setData) => {
+  
+  const data = await api.get("/getRecipes").data;
+  setData(data)
+
+}
